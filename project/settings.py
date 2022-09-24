@@ -25,7 +25,7 @@ load_dotenv(find_dotenv())
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('IS_DEVELOPMENT')
 
 ALLOWED_HOSTS = [
     '*'
@@ -34,7 +34,7 @@ ALLOWED_HOSTS = [
 REST_FRAMEWORK = {
 
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
-    'PAGE_SIZE': 100,
+    'PAGE_SIZE': 10,
     "DEFAULT_AUTHENTICATION_CLASSES": [
         "rest_framework.authentication.TokenAuthentication",
         "rest_framework.authentication.BasicAuthentication",
@@ -150,7 +150,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'  
 
-#STATIC_ROOT = Path(BASE_DIR, 'staticfiles')
+STATIC_ROOT = Path(BASE_DIR, 'staticfiles')
 
 STATICFILES_DIRS = [
     BASE_DIR / 'static'

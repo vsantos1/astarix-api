@@ -1,22 +1,49 @@
-# spotify-django
+# ASTARIX
 
-Web music player based on spotify with Django
+Web API built for help post guides and tutorials about games
 
-## Installation
+## Requirements
+
+- [Python-3.+](https://python.org)
+- [Docker](https://www.docker.com/)
+- [Docker Compose](https://docs.docker.com/compose/)
+
+## Setup
 
 1. Clone the repository
-2. Install the requirements
-3. Create a Spotify app and get the client id and secret
-4. Create a .env file in the root directory and add the following variables:
 
-```
-SECRET_KEY=DJANGO_SECRET_KEY
+```bash
+git clone
 ```
 
-5. Run the server
+2. Create a virtual environment
 
+```bash
+python3 -m venv venv
 ```
+
+3. Activate the virtual environment
+
+```bash
+source venv/bin/activate
+```
+
+4. Install the dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+## Running
+
+```bash
 python manage.py runserver
 ```
 
-6. Go to http://localhost:8000/ and enjoy!
+```bash
+python manage.py createsuperuser # Create a superuser
+python manage.py makemigrations # Create migrations
+python manage.py migrate # Apply migrations
+```
+
+# Contributing
