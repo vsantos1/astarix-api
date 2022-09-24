@@ -1,15 +1,16 @@
-from .models import Album, Song
+from .models import GameMap, Pixel
 from rest_framework import serializers
 from django.contrib.auth.models import User
-class AlbumSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Album
-        fields = ('id', 'name', 'artist', 'genre', 'release_date', 'cover')
 
-class SongSerializer(serializers.ModelSerializer):
+class GameMapSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Song
-        fields = ('id', 'name', 'artist', 'album', 'music')
+        model = GameMap
+        fields = ('id', 'name', 'map_image', 'game')
+
+class PixelSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Pixel
+        fields = ('id', 'title', 'description', 'agent', 'approved','sent_by','game_map','video')
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:

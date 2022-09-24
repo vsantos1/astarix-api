@@ -33,14 +33,14 @@ ALLOWED_HOSTS = [
 
 REST_FRAMEWORK = {
 
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
-    'PAGE_SIZE':10,
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 100,
     "DEFAULT_AUTHENTICATION_CLASSES": [
         "rest_framework.authentication.TokenAuthentication",
         "rest_framework.authentication.BasicAuthentication",
         "rest_framework_simplejwt.authentication.JWTAuthentication",
     ],
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
 }
 
 # Application definition
@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'astarix.apps.AstarixConfig',
     'drf_yasg',
     'knox',
+    'django_filters',
 ]
 
 SWAGGER_SETTINGS = {
@@ -149,7 +150,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'  
 
-STATIC_ROOT = Path(BASE_DIR, 'staticfiles')
+#STATIC_ROOT = Path(BASE_DIR, 'staticfiles')
 
 STATICFILES_DIRS = [
     BASE_DIR / 'static'

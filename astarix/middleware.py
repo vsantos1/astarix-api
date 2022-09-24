@@ -1,5 +1,5 @@
 
-# On production Enable this middleware
+# Habilitar dps
 class DisableCacheMiddleware:
 
     def __init__(self,get_response):

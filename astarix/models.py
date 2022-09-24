@@ -2,21 +2,21 @@ from django.db import models
 from uuid import uuid4
 # Create your models here.
 
-class Album(models.Model):
+class GameMap(models.Model):
     name = models.CharField(max_length=100)
-    artist = models.CharField(max_length=100)
-    genre = models.CharField(max_length=100)
-    release_date = models.DateField(auto_now=False, auto_now_add=True)
-    cover = models.ImageField(upload_to='covers/', null=True, blank=True)
+    map_image = models.ImageField(upload_to='images/')
+    game = models.CharField(max_length=100)
 
     def __str__(self):
         return self.name
-
-class Song(models.Model):
-    name = models.CharField(max_length=100)
-    artist = models.CharField(max_length=100)
-    album = models.ForeignKey(Album, on_delete=models.CASCADE)
-    music = models.FileField(upload_to='songs/')
+class Pixel(models.Model):
+    title = models.CharField(max_length=100,blank=False)
+    description = models.CharField(max_length=255,blank=True)
+    agent = models.CharField(max_length=100,blank=False)
+    approved = models.BooleanField(default=False)
+    sent_by = models.CharField(max_length=100,blank=True)
+    game_map = models.ForeignKey(GameMap,on_delete=models.DO_NOTHING)
+    video = models.FileField(upload_to='videos/',blank=True)
 
     def __str__(self):
-        return self.name
+        return self.title
