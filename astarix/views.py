@@ -26,7 +26,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 # Create your views here.
 
 class UserViewSet(viewsets.ModelViewSet):
-    permission_classes = (permissions.IsAuthenticated,)
+    permission_classes = (permissions.AllowAny,)
     serializer_class     = RegisterSerializer
     queryset = get_user_model().objects.all()
 
